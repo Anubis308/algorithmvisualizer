@@ -64,9 +64,9 @@ export class SortGraphComponent implements OnInit {
     this.additionalDataForm.controls.delay.setValue(this.timeoutMilisecond);
     //console.log(parseInt(this.additionalDataForm.get('delay').value));
     for(let i=0; i<this.numberOfData-1; i++){
-      setTimeout(()=>{
+      //setTimeout(()=>{
         this.innerSort(i);
-      },(i *(this.numberOfData)* this.timeoutMilisecond+10)/2);
+      //},(i *(this.numberOfData)* this.timeoutMilisecond+10)/2);
       
     }
   }
@@ -85,9 +85,9 @@ export class SortGraphComponent implements OnInit {
     this.additionalDataForm.controls.delay.setValue(this.timeoutMilisecond);
     //console.log(parseInt(this.additionalDataForm.get('delay').value));
     for(let i=0; i<this.numberOfData; i++){
-      setTimeout(()=>{
+      //setTimeout(()=>{
         this.innerBubbleSort(i);
-      },i *this.numberOfData* this.timeoutMilisecond);
+      //},i *this.numberOfData* this.timeoutMilisecond);
       
     }
   }
