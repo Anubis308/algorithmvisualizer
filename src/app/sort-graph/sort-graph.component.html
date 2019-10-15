@@ -1,24 +1,31 @@
-<div>
-    <button mat-raised-button color="primary" (click)="sort()">Sort!</button>
-</div>
-<!--<div>
-    <span *ngFor="let data of tempArray">
-    <span>{{data}} </span>
-</span>
-</div>-->
-
-<div>
-    <div>
-      <div style="display: block">
-        <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
-        </canvas>
-      </div>
-      <button mat-button mat-raised-button color="primary" (click)="randomize()">Randomize Data</button>
-    </div>
-  </div>
+<div style="text-align: center;">
+  <button mat-raised-button color="primary" (click)="randomize()">Randomize Data</button>
+  <button mat-raised-button color="primary" (click)="selectionSort()">Selection Sort!</button>
+  <button mat-raised-button color="primary" (click)="bubbleSort()">Bubble Sort!</button>
   
+</div>
+<div style="margin-left: 20px;">
+    <form [formGroup]="additionalDataForm">
+        <!--<mat-form-field>
+          <input matInput placeholder="Number of elements" value="100">
+        </mat-form-field>-->
+      
+        <mat-form-field>
+            <input matInput placeholder="Delay per iteration(mili-second)"  formControlName="delay"  type="number" value="0" required>
+        </mat-form-field>
+    </form>
+</div>
+
+<div style="max-height: 80vw;">
+  <div style="display: block">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+    >
+    </canvas>
+  </div>
+</div>
