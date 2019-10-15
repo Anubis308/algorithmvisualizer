@@ -66,7 +66,7 @@ export class SortGraphComponent implements OnInit {
     for(let i=0; i<this.numberOfData-1; i++){
       setTimeout(()=>{
         this.innerSort(i);
-      },i *(this.numberOfData-i)* this.timeoutMilisecond);
+      },(i *(this.numberOfData)* this.timeoutMilisecond+10)/2);
       
     }
   }
@@ -75,7 +75,7 @@ export class SortGraphComponent implements OnInit {
     for(let j=i+1; j<this.numberOfData; j++){
       setTimeout(()=>{
         this.innerSwap(i,j);
-      },j * this.timeoutMilisecond);
+      },(j-i) * this.timeoutMilisecond);
       
     }
   }
