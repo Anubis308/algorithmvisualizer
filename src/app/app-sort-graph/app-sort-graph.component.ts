@@ -16,6 +16,8 @@ export class AppSortGraphComponent implements OnInit {
   timeoutMilisecond:number;
   enableRandomization=true;
   additionalDataForm: FormGroup;
+  isImportant;
+  is2Important;
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -35,6 +37,7 @@ export class AppSortGraphComponent implements OnInit {
   public barChartType: ChartType = 'bar'; //pie,line,radar
   public barChartLegend = true;
   public barChartData: ChartDataSets[];
+
 
   constructor(private fb: FormBuilder) { }
 
@@ -59,10 +62,11 @@ export class AppSortGraphComponent implements OnInit {
   }
 
   selectionSort(){
-    this.timeoutMilisecond=parseInt(this.additionalDataForm.get('delay').value)>0?parseInt(this.additionalDataForm.get('delay').value):0;
+    this.timeoutMilisecond=parseInt(this.additionalDataForm.get('delay').value)>0?parseInt(this.additionalDataForm.get('delay').value):5;
     this.additionalDataForm.controls.delay.setValue(this.timeoutMilisecond);
     //console.log(parseInt(this.additionalDataForm.get('delay').value));
     for(let i=0; i<this.numberOfData-1; i++){
+      
       setTimeout(()=>{
         this.innerSort(i);
       },(i *(this.numberOfData)* this.timeoutMilisecond+10)/2);
@@ -71,7 +75,9 @@ export class AppSortGraphComponent implements OnInit {
   }
 
   innerSort (i:number) {
+    
     for(let j=i+1; j<this.numberOfData; j++){
+      
       setTimeout(()=>{
         this.innerSwap(i,j);
       },(j-i) * this.timeoutMilisecond);
@@ -80,7 +86,7 @@ export class AppSortGraphComponent implements OnInit {
   }
 
   bubbleSort(){
-    this.timeoutMilisecond=parseInt(this.additionalDataForm.get('delay').value)>0?parseInt(this.additionalDataForm.get('delay').value):0;
+    this.timeoutMilisecond=parseInt(this.additionalDataForm.get('delay').value)>0?parseInt(this.additionalDataForm.get('delay').value):5;
     this.additionalDataForm.controls.delay.setValue(this.timeoutMilisecond);
     //console.log(parseInt(this.additionalDataForm.get('delay').value));
     for(let i=0; i<this.numberOfData; i++){
@@ -120,6 +126,8 @@ export class AppSortGraphComponent implements OnInit {
   }*/
   
   innerSwap(i:number,j:number){
+    this.is2Important=i;
+    this.isImportant=j;
     if(this.tempArray[i]>this.tempArray[j]){
       /*let now = new Date().getTime();
       while ( new Date().getTime() < now + 300){}*/
@@ -142,6 +150,8 @@ export class AppSortGraphComponent implements OnInit {
   }
 
   public randomize(): void {
+    this.isImportant=-1;
+    this.is2Important=-1;
     this.datas=Array(this.numberOfData).fill(0).map(() => Math.round(Math.random() * 100));
     this.tempArray=this.datas;
     this.barChartData = [

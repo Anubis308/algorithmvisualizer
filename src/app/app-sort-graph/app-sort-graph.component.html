@@ -11,20 +11,14 @@
           </mat-form-field>-->
         
           <mat-form-field>
-              <input matInput placeholder="Delay per iteration(mili-second)"  formControlName="delay"  type="number" value="0" required>
+              <input matInput placeholder="Delay per iteration(mili-second)"  formControlName="delay"  type="number" value="5" required>
           </mat-form-field>
       </form>
   </div>
   
-<div fxLayout="row">
-    <span *ngFor="let data of datas">
-        {{data}}
-    </span>
-</div>
 
-<div fxLayout="row">
-    <span *ngFor="let data of datas" style="background-color: red; height: 100px;">
-        {{data}}
-    </span>
+
+<div fxLayout="row wrap" fxLayoutAlign="center end" style="height: 50%;">
+    <span *ngFor="let data of datas; index as i" [style.background]=" i==isImportant|| i==is2Important?  'blue':'rgba(245,0,90,.5)'" [ngStyle]="{'height.%': data}" style="border:1px solid; width: calc(.95% - 2px);"></span>
 </div>
   
