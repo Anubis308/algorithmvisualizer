@@ -3,6 +3,7 @@
   <button mat-raised-button color="primary" (click)="selectionSort()">Selection Sort!</button>
   <button mat-raised-button color="primary" (click)="bubbleSort()">Bubble Sort!</button>
   
+  
 </div>
 <div style="margin-left: 20px;">
     <form [formGroup]="additionalDataForm">
@@ -25,6 +26,7 @@
       [options]="barChartOptions"
       [legend]="barChartLegend"
       [chartType]="barChartType"
+      [colors]="color"
     >
     </canvas>
   </div>

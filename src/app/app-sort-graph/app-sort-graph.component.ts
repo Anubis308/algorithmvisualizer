@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets, ChartAnimationOptions, ChartColor } from 'chart.js';
-import { Label, Colors } from 'ng2-charts';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 @Component({
-  selector: 'sort-graph',
-  templateUrl: './sort-graph.component.html',
-  styleUrls: ['./sort-graph.component.scss']
+  selector: 'app-sort-graph',
+  templateUrl: './app-sort-graph.component.html',
+  styleUrls: ['./app-sort-graph.component.scss']
 })
-export class SortGraphComponent implements OnInit {
+export class AppSortGraphComponent implements OnInit {
   isDataSorted=false;
   numberOfData:number;
   datas=[];
@@ -32,13 +31,10 @@ export class SortGraphComponent implements OnInit {
       duration:0,
     }
   }
-
   public barChartLabels: Label[] ;
   public barChartType: ChartType = 'bar'; //pie,line,radar
   public barChartLegend = true;
   public barChartData: ChartDataSets[];
-  public color=[];
-
 
   constructor(private fb: FormBuilder) { }
 
@@ -46,15 +42,8 @@ export class SortGraphComponent implements OnInit {
     this.numberOfData=100;
     this.timeoutMilisecond=0;
     this.datas=Array(this.numberOfData).fill(0).map(() => Math.round(Math.random() * 100));
-    this.color[0]={backgroundColor:"rgba(10,150,132,1)"};
-    /*for(let i=0;i<this.numberOfData;i++){
-      this.color[i]={backgroundColor:"rgba(10,150,132,1)"};
-      //this.color[i]={backgroundColor:"rgba(255, 99, 132, 1)"};
-      //this.color[i]='rgba(255, 99, 132, 1)';
-    }*/
-    this.tempArray=this.datas;
     this.barChartLabels=this.tempArray;
-    
+    this.tempArray=this.datas;
     this.barChartData = [
       { data: this.tempArray}
     ];
@@ -98,11 +87,10 @@ export class SortGraphComponent implements OnInit {
       setTimeout(()=>{
         this.innerBubbleSort(i);
       },i *this.numberOfData* this.timeoutMilisecond);
-      ;
+      
     }
   }
   innerBubbleSort (i:number) {
-    
     for(let j=0; j<this.numberOfData-1; j++){
       setTimeout(()=>{
         this.innerSwap(j,j+1);
@@ -111,6 +99,25 @@ export class SortGraphComponent implements OnInit {
     }
   }
 
+  /*insertionSort(){
+    this.timeoutMilisecond=parseInt(this.additionalDataForm.get('delay').value)>0?parseInt(this.additionalDataForm.get('delay').value):0;
+    this.additionalDataForm.controls.delay.setValue(this.timeoutMilisecond);
+    //console.log(parseInt(this.additionalDataForm.get('delay').value));
+    for(let i=1; i<this.numberOfData; i++){
+      setTimeout(()=>{
+        this.innerInsertionSort(i);
+      },(i-1) *this.numberOfData* this.timeoutMilisecond);
+      
+    }
+  }
+  innerInsertionSort (i:number) {
+    for(let j=i-1; j>0; j++){
+      setTimeout(()=>{
+        this.innerSwap(j,j+1);
+      },j * this.timeoutMilisecond);
+      
+    }
+  }*/
   
   innerSwap(i:number,j:number){
     if(this.tempArray[i]>this.tempArray[j]){

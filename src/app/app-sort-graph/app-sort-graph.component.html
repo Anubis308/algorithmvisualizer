@@ -1,0 +1,30 @@
+<div style="text-align: center;">
+    <button mat-raised-button color="primary" (click)="randomize()">Randomize Data</button>
+    <button mat-raised-button color="primary" (click)="selectionSort()">Selection Sort!</button>
+    <button mat-raised-button color="primary" (click)="bubbleSort()">Bubble Sort!</button>
+    
+  </div>
+  <div style="margin-left: 20px;">
+      <form [formGroup]="additionalDataForm">
+          <!--<mat-form-field>
+            <input matInput placeholder="Number of elements" value="100">
+          </mat-form-field>-->
+        
+          <mat-form-field>
+              <input matInput placeholder="Delay per iteration(mili-second)"  formControlName="delay"  type="number" value="0" required>
+          </mat-form-field>
+      </form>
+  </div>
+  
+<div fxLayout="row">
+    <span *ngFor="let data of datas">
+        {{data}}
+    </span>
+</div>
+
+<div fxLayout="row">
+    <span *ngFor="let data of datas" style="background-color: red; height: 100px;">
+        {{data}}
+    </span>
+</div>
+  

@@ -11,11 +11,13 @@ import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AppSortGraphComponent } from './app-sort-graph/app-sort-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SortGraphComponent
+    SortGraphComponent,
+    AppSortGraphComponent
   ],
   imports: [
     BrowserModule,
